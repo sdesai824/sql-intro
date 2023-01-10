@@ -1,4 +1,11 @@
 -- Who was the leading home run hitter for each team in 2019?
+SELECT teams.name, players.first_name, players.last_name,  MAX(stats.home_runs)
+FROM teams
+INNER JOIN stats ON teams.id = stats.team_id
+INNER JOIN players on players.id = stats.player_id
+WHERE year = 2019
+GROUP BY stats.team_id
+ORDER BY teams.name
 
 -- Expected result:
 --
